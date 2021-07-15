@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jquery-eks
+  namespace: jquery
+spec:
+  selector:
+    matchLabels:
+      app: jquery
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: jquery
+    spec:
+      containers:
+      - name: jquery
+        image: 691016047173.dkr.ecr.us-east-2.amazonaws.com/jquery-eks:1
+        ports:
+        - containerPort: 80
